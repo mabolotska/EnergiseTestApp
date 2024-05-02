@@ -24,6 +24,8 @@
 		D07878692BE224E000FCE944 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07878682BE224E000FCE944 /* Constants.swift */; };
 		D078786B2BE2254D00FCE944 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D078786A2BE2254D00FCE944 /* NetworkManager.swift */; };
 		D078786D2BE2D03300FCE944 /* ButtonsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D078786C2BE2D03300FCE944 /* ButtonsTableCell.swift */; };
+		D078786F2BE36AAE00FCE944 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D078786E2BE36AAE00FCE944 /* WebViewController.swift */; };
+		D07878752BE38FA000FCE944 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07878742BE38FA000FCE944 /* NetworkReachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		D07878682BE224E000FCE944 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D078786A2BE2254D00FCE944 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D078786C2BE2D03300FCE944 /* ButtonsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsTableCell.swift; sourceTree = "<group>"; };
+		D078786E2BE36AAE00FCE944 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D07878742BE38FA000FCE944 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				D078783F2BE16F3000FCE944 /* FirstViewController.swift */,
 				D078785A2BE1713D00FCE944 /* SecondViewController.swift */,
 				D078785C2BE1714E00FCE944 /* ThirdViewController.swift */,
+				D078786E2BE36AAE00FCE944 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				D078786A2BE2254D00FCE944 /* NetworkManager.swift */,
+				D07878742BE38FA000FCE944 /* NetworkReachability.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D078786B2BE2254D00FCE944 /* NetworkManager.swift in Sources */,
+				D078786F2BE36AAE00FCE944 /* WebViewController.swift in Sources */,
 				D07878592BE170C900FCE944 /* TabBarViewController.swift in Sources */,
 				D07878402BE16F3000FCE944 /* FirstViewController.swift in Sources */,
 				D078783C2BE16F3000FCE944 /* AppDelegate.swift in Sources */,
@@ -227,6 +234,7 @@
 				D078785D2BE1714E00FCE944 /* ThirdViewController.swift in Sources */,
 				D078783E2BE16F3000FCE944 /* SceneDelegate.swift in Sources */,
 				D07878692BE224E000FCE944 /* Constants.swift in Sources */,
+				D07878752BE38FA000FCE944 /* NetworkReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

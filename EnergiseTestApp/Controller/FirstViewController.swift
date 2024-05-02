@@ -15,11 +15,8 @@ final class FirstViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "play", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30))?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
         button.setImage(UIImage(systemName: "pause", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30))?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .selected)
-//        button.setTitle("Play   ", for: .normal)
-//        button.setTitleColor(.blue, for: .normal)
         button.tintColor = .black
-  //      button.semanticContentAttribute = .forceRightToLeft
-        button.layer.cornerRadius = 0.5 * 100
+        button.layer.cornerRadius = 50
         button.layer.borderWidth = 1
         button.layer.masksToBounds = true
         return button
@@ -38,11 +35,15 @@ final class FirstViewController: UIViewController {
         setupViews()
         setupConstraints()
       timerButton.addTarget(self, action: #selector(timerButtonTapped), for: .touchUpInside)
-        startPulsatingAnimation()
     }
 
     private func setupViews() {
         [timerButton, timerLabel].forEach { view.addSubview($0)}
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startPulsatingAnimation()
     }
 
     @objc func timerButtonTapped(sender: UIButton) {
@@ -74,14 +75,9 @@ final class FirstViewController: UIViewController {
         timer = nil
         milliseconds = 0
         timerLabel.text = "00:00"
-//        timerButton.setImage(UIImage(systemName: "pause"), for: .normal)
     }
-//
-    func startPulsatingAnimation() {
-//        UIView.animate(withDuration: 0.5, delay: 0, options: [.autoreverse, .repeat], animations: {
-//            self.timerButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-//        }, completion: nil)
 
+    func startPulsatingAnimation() {
         UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction, .repeat], animations: {
 
             self.timerButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)

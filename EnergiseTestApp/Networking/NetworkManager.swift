@@ -1,9 +1,7 @@
 //
 //  NetworkManager.swift
 //  EnergiseTestApp
-//
-//  Created by Maryna Bolotska on 01/05/24.
-//
+
 
 import UIKit
 import Alamofire
@@ -14,12 +12,32 @@ class NetworkManager {
 
     private init() { }
 
+    let sessionManager: Session = {
+
+      let configuration = URLSessionConfiguration.af.default
+
+      configuration.timeoutIntervalForRequest = 30
+      configuration.waitsForConnectivity = true
+
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+
+        let responseCacher = ResponseCacher(behavior: .modify { _, response in
+          let userInfo = ["date": Date()]
+          return CachedURLResponse(
+            response: response.response,
+            data: response.data,
+            userInfo: userInfo,
+            storagePolicy: .allowed)
+        })
+      return Session(
+        configuration: configuration,
+        cachedResponseHandler: responseCacher)
+    }()
+
     typealias completionHandler = (Result<Map, Error>) -> Void
 
-    func fetchData<T: Decodable>(url: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
-
-        AF.request(url, method: .get, parameters: nil, headers: nil).validate().responseDecodable(of: T.self) {  response in
-
+    func fetchData(url: String, completionHandler: @escaping completionHandler) {
+        AF.request(url, method: .get, parameters: nil, headers: nil).validate().responseDecodable(of: Map.self) { response in
             switch response.result {
             case .success(let data):
                 completionHandler(.success(data))
@@ -28,4 +46,7 @@ class NetworkManager {
             }
         }
     }
+
+
+
 }

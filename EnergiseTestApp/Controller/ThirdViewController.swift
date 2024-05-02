@@ -4,10 +4,13 @@
 //
 
 import UIKit
+import StoreKit
+import WebKit
 
-class ThirdViewController: UIViewController {
+class ThirdViewController: UIViewController{
     private let tableView = UITableView()
     let buttonTitles = ["Rate App", "Share App", "Contact us"]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +18,7 @@ class ThirdViewController: UIViewController {
         configureTableView()
         setViews()
         setupUI()
+
     }
 
     private func configureTableView() {
@@ -24,6 +28,21 @@ class ThirdViewController: UIViewController {
         tableView.register(ButtonsTableCell.self, forCellReuseIdentifier: ButtonsTableCell.identifier)
         tableView.rowHeight = 100
 
+    }
+    func promptForReview() {
+        SKStoreReviewController.requestReviewInCurrentScene()
+    }
+
+    func shareText() {
+        let textToShare = "Hello, this is the text you want to share!"
+        let activityViewController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+
+        present(activityViewController, animated: true, completion: nil)
+    }
+    func loadUrl() {
+     let vc = WebViewController()
+     navigationController?.pushViewController(vc, animated: true)
     }
 
 
@@ -41,15 +60,15 @@ extension ThirdViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             cell.buttonAction = {
-                print("Button 1 tapped")
+                self.promptForReview()
             }
         case 1:
             cell.buttonAction = {
-                print("Button 2 tapped")
+                self.shareText()
             }
         case 2:
             cell.buttonAction = {
-                print("Button 3 tapped")
+                self.loadUrl()
             }
         default:
             break
@@ -75,6 +94,19 @@ extension ThirdViewController {
             make.height.width.equalTo(300)
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
+        }
+
+
+    }
+}
+
+
+extension SKStoreReviewController {
+    public static func requestReviewInCurrentScene() {
+        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            DispatchQueue.main.async {
+                requestReview(in: scene)
+            }
         }
     }
 }
